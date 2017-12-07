@@ -125,7 +125,7 @@ class mm_provider(object):
 
 mynet = math.Object(
     NAME='mynet',
-    PARENT=networks.nets['litecoin_testnet'],
+	PARENT=networks.nets['verium_testnet'],
     SHARE_PERIOD=5, # seconds
     CHAIN_LENGTH=20*60//3, # shares
     REAL_CHAIN_LENGTH=20*60//3, # shares

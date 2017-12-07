@@ -1,7 +1,7 @@
 Requirements:
 -------------------------
 Generic:
-* Novacoin >=0.4.4.6
+* Verium >=1.0.1
 * Python >=2.6
 * Twisted >=10.0.0
 * python-argparse (for Python =2.6)
@@ -20,12 +20,12 @@ Windows:
 
 Running P2Pool:
 -------------------------
-In order to run P2Pool with the Novacoin network, you would need to build and install the
-ltc_scrypt module that includes the scrypt proof of work code that Novacoin uses for hashes.
+In order to run P2Pool with the Verium network, you would need to build and install the
+scryptSquared module that includes the scrypt proof of work code that Verium uses for hashes.
 
 Linux:
 
-    cd litecoin_scrypt
+	cd scryptSquared
     sudo python setup.py install
 
 Windows (mingw):
@@ -34,7 +34,7 @@ Windows (mingw):
 
 In bash type this:
 
-    cd litecoin_scrypt
+	cd scryptSquared
     C:\Python27\python.exe setup.py build --compile=mingw32 install
 
 Windows (microsoft visual c++)
@@ -44,7 +44,7 @@ In bash type this:
 
     SET VS90COMNTOOLS=%VS110COMNTOOLS%	           # For visual c++ 2012
     SET VS90COMNTOOLS=%VS100COMNTOOLS%             # For visual c++ 2010
-    cd litecoin_scrypt
+	cd scryptSquared
     C:\Python27\python.exe setup.py build --compile=mingw32 install
 
 If you run into an error with unrecognized command line option '-mno-cygwin', see this:

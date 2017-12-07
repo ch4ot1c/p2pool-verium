@@ -8,8 +8,8 @@ from p2pool.util import math
 # changes can be done by changing one, then the other
 
 nets = dict(
-    blackcoin=math.Object(
-        PARENT=networks.nets['blackcoin'],
+    verium=math.Object(
+        PARENT=networks.nets['verium'],
         SHARE_PERIOD=15, # seconds
         CHAIN_LENGTH=12*60*60//15, # shares
         REAL_CHAIN_LENGTH=12*60*60//15, # shares
@@ -26,8 +26,8 @@ nets = dict(
         ANNOUNCE_CHANNEL='#p2pool-alt',
         VERSION_CHECK=lambda v: v >= 60011,
     ),
-    blackcoin_testnet=math.Object(
-        PARENT=networks.nets['blackcoin_testnet'],
+    verium_testnet=math.Object(
+        PARENT=networks.nets['verium_testnet'],
         SHARE_PERIOD=15, # seconds
         CHAIN_LENGTH=12*60*60//15, # shares
         REAL_CHAIN_LENGTH=12*60*60//15, # shares
