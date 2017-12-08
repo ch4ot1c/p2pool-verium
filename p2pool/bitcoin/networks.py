@@ -32,7 +32,7 @@ nets = dict(
             not (yield bitcoind.rpc_getinfo())['testnet']
         )),
         SUBSIDY_FUNC=lambda bitcoind, target: 10000*100000000,
-        BLOCK_PERIOD=60, # s
+		BLOCK_PERIOD=240, # s
 		SYMBOL='VRM',
 		CONF_FILE_FUNC=lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'Verium') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/Verium/') if platform.system() == 'Darwin' else os.path.expanduser('~/.verium'), 'verium.conf'),
         BLOCK_EXPLORER_URL_PREFIX='http://blocks.verium.pw/block/',
@@ -52,7 +52,7 @@ nets = dict(
             (yield bitcoind.rpc_getinfo())['testnet']
         )),
         SUBSIDY_FUNC=lambda bitcoind, target: 10000*100000000,
-        BLOCK_PERIOD=60, # s
+		BLOCK_PERIOD=240, # s
 		SYMBOL='VRM',
 		CONF_FILE_FUNC=lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'Verium') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/Verium/') if platform.system() == 'Darwin' else os.path.expanduser('~/.verium'), 'verium.conf'),
         BLOCK_EXPLORER_URL_PREFIX='http://testnet/block/',
