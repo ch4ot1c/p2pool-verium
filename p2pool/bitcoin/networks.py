@@ -31,7 +31,7 @@ nets = dict(
             'veriumaddress' in (yield bitcoind.rpc_help()) and
             not (yield bitcoind.rpc_getinfo())['testnet']
         )),
-        SUBSIDY_FUNC=lambda bitcoind, target: 10000*100000000,
+		SUBSIDY_FUNC=lambda bitcoind, target: get_subsidy(bitcoind, target),
 		BLOCK_PERIOD=240, # s
 		SYMBOL='VRM',
 		CONF_FILE_FUNC=lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'Verium') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/Verium/') if platform.system() == 'Darwin' else os.path.expanduser('~/.verium'), 'verium.conf'),
@@ -51,7 +51,7 @@ nets = dict(
             'veriumaddress' in (yield bitcoind.rpc_help()) and
             (yield bitcoind.rpc_getinfo())['testnet']
         )),
-        SUBSIDY_FUNC=lambda bitcoind, target: 10000*100000000,
+		SUBSIDY_FUNC=lambda bitcoind, target: get_subsidy(bitcoind, target),
 		BLOCK_PERIOD=240, # s
 		SYMBOL='VRM',
 		CONF_FILE_FUNC=lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'Verium') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/Verium/') if platform.system() == 'Darwin' else os.path.expanduser('~/.verium'), 'verium.conf'),
