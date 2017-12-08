@@ -341,8 +341,9 @@ class WorkerBridge(worker_interface.WorkerBridge):
             assert len(coinbase_nonce) == self.COINBASE_NONCE_LENGTH
             new_packed_gentx = packed_gentx[:-self.COINBASE_NONCE_LENGTH-4] + coinbase_nonce + packed_gentx[-4:] if coinbase_nonce != '\0'*self.COINBASE_NONCE_LENGTH else packed_gentx
             new_gentx = bitcoin_data.tx_type.unpack(new_packed_gentx) if coinbase_nonce != '\0'*self.COINBASE_NONCE_LENGTH else gentx
-            
-            header_hash = pow_hash = bitcoin_data.scrypt(bitcoin_data.block_header_type.pack(header))
+
+			header_hash = bitcoin_data.hash256(bitcoin_data.block_header_type.pack(header))
+			pow_hash = bitcoin_data.scrypt(bitcoin_data.block_header_type.pack(header))
             try:
                 if pow_hash <= header['bits'].target or p2pool.DEBUG:
                     helper.submit_block(dict(header=header, txs=[new_gentx] + other_transactions, signature=''), False, self.node.factory, self.node.bitcoind, self.node.bitcoind_work, self.node.net)
