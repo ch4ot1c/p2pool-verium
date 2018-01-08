@@ -18,8 +18,12 @@ def check_genesis_block(bitcoind, genesis_block_hash):
 @defer.inlineCallbacks
 def get_subsidy(bitcoind, target):
     res = yield bitcoind.rpc_getblock(target)
-
     defer.returnValue(res)
+
+@defer.inlineCallbacks
+def get_blocktime(bitcoind, target):
+	res = yield bitcoind.rpc_getblocktime()
+	defer.returnValue(res)
 
 nets = dict(
     verium=math.Object(
@@ -32,15 +36,15 @@ nets = dict(
             not (yield bitcoind.rpc_getinfo())['testnet']
         )),
 		SUBSIDY_FUNC=lambda bitcoind, target: get_subsidy(bitcoind, target),
-		BLOCK_PERIOD=240, # s
+		BLOCK_PERIOD=lambda bitcoind: get_blocktime(bitcoind), # s
 		SYMBOL='VRM',
 		CONF_FILE_FUNC=lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'Verium') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/Verium/') if platform.system() == 'Darwin' else os.path.expanduser('~/.verium'), 'verium.conf'),
-        BLOCK_EXPLORER_URL_PREFIX='http://blocks.verium.pw/block/',
-        ADDRESS_EXPLORER_URL_PREFIX='http://blocks.verium.pw/address/',
-        TX_EXPLORER_URL_PREFIX='http://blocks.verium.pw/tx/',
+		BLOCK_EXPLORER_URL_PREFIX='https://chainz.cryptoid.info/vrm/block.dws?',
+		ADDRESS_EXPLORER_URL_PREFIX='https://chainz.cryptoid.info/vrm/address.dws?',
+		TX_EXPLORER_URL_PREFIX='https://chainz.cryptoid.info/vrm/tx.dws?',
         SANE_TARGET_RANGE=(2**256//1000000000 - 1, 2**256//1000 - 1),
         DUMB_SCRYPT_DIFF=2**16,
-		DUST_THRESHOLD=0.001,
+		DUST_THRESHOLD=0.1,
     ),
     verium_testnet=math.Object(
         P2P_PREFIX='cdf2c0ef'.decode('hex'),
@@ -52,7 +56,7 @@ nets = dict(
             (yield bitcoind.rpc_getinfo())['testnet']
         )),
 		SUBSIDY_FUNC=lambda bitcoind, target: get_subsidy(bitcoind, target),
-		BLOCK_PERIOD=240, # s
+		BLOCK_PERIOD=lambda bitcoind: get_blocktime(bitcoind), # s
 		SYMBOL='VRM',
 		CONF_FILE_FUNC=lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'Verium') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/Verium/') if platform.system() == 'Darwin' else os.path.expanduser('~/.verium'), 'verium.conf'),
         BLOCK_EXPLORER_URL_PREFIX='http://testnet/block/',
