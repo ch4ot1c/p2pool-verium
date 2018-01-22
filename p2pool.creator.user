@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.4.1, 2018-01-05T15:21:29. -->
+<!-- Written by QtCreator 4.4.1, 2018-01-11T17:17:35. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -36,7 +36,7 @@
    <value type="int" key="EditorConfiguration.MarginColumn">80</value>
    <value type="bool" key="EditorConfiguration.MouseHiding">true</value>
    <value type="bool" key="EditorConfiguration.MouseNavigation">true</value>
-   <value type="int" key="EditorConfiguration.PaddingMode">1</value>
+   <value type="int" key="EditorConfiguration.PaddingMode">0</value>
    <value type="bool" key="EditorConfiguration.ScrollWheelZooming">true</value>
    <value type="bool" key="EditorConfiguration.ShowMargin">false</value>
    <value type="int" key="EditorConfiguration.SmartBackspaceBehavior">0</value>
@@ -44,7 +44,7 @@
    <value type="bool" key="EditorConfiguration.SpacesForTabs">true</value>
    <value type="int" key="EditorConfiguration.TabKeyBehavior">0</value>
    <value type="int" key="EditorConfiguration.TabSize">8</value>
-   <value type="bool" key="EditorConfiguration.UseGlobal">true</value>
+   <value type="bool" key="EditorConfiguration.UseGlobal">false</value>
    <value type="int" key="EditorConfiguration.Utf8BomBehavior">1</value>
    <value type="bool" key="EditorConfiguration.addFinalNewLine">true</value>
    <value type="bool" key="EditorConfiguration.cleanIndentation">true</value>

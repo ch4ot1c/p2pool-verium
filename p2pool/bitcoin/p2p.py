@@ -18,7 +18,7 @@ class Protocol(p2protocol.Protocol):
     
     def connectionMade(self):
         self.send_version(
-			version=80001,
+            version=80001,
             services=1,
             time=int(time.time()),
             addr_to=dict(
@@ -59,7 +59,7 @@ class Protocol(p2protocol.Protocol):
         if hasattr(self.factory, 'gotConnection'):
             self.factory.gotConnection(self)
         
-        self.pinger = deferral.RobustLoopingCall(self.send_ping, nonce=1234)
+        self.pinger = deferral.RobustLoopingCall(self.send_ping, nonce=0)
         self.pinger.start(30)
     
     message_inv = pack.ComposedType([
@@ -133,7 +133,7 @@ class Protocol(p2protocol.Protocol):
     ])
     def handle_ping(self, nonce):
         self.send_pong(nonce=nonce)
-    
+
     message_pong = pack.ComposedType([
         ('nonce', pack.IntType(64)),
     ])
