@@ -31,7 +31,10 @@ nets = dict(
         P2P_PORT=36988,
         ADDRESS_VERSION=70,
         RPC_PORT=33987,
-        RPC_CHECK=defer.inlineCallbacks(lambda bitcoind: defer.returnValue('veriumaddress' in (yield bitcoind.rpc_help()) and not (yield bitcoind.rpc_getinfo())['testnet'])),
+        RPC_CHECK=defer.inlineCallbacks(lambda bitcoind: defer.returnValue(
+			'veriumaddress' in (yield bitcoind.rpc_help()) and not 
+			(yield bitcoind.rpc_getinfo())['testnet']
+		)),
         SUBSIDY_FUNC=lambda bitcoind, target: get_subsidy(bitcoind, target),
         BLOCK_PERIOD=lambda bitcoind: get_blocktime(bitcoind), # s
         SYMBOL='VRM',
