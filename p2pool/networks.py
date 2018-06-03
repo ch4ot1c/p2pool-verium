@@ -17,14 +17,14 @@ nets = dict(
         SPREAD=10, # blocks
         IDENTIFIER='e037d5b8c6923610'.decode('hex'),
         PREFIX='70352205'.decode('hex'),
-        P2P_PORT=8777,
+        P2P_PORT=36988,
         MIN_TARGET=0,
         MAX_TARGET=2**256//2**20 - 1,
         PERSIST=True,
         WORKER_PORT=8336,
         BOOTSTRAP_ADDRS='198.52.200.75'.split(' '),
         ANNOUNCE_CHANNEL='#p2pool-alt',
-        VERSION_CHECK=lambda v: v >= 60011,
+        VERSION_CHECK=lambda v: v >= 80001,
     ),
     verium_testnet=math.Object(
         PARENT=networks.nets['verium_testnet'],

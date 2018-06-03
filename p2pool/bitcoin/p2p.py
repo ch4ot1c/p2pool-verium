@@ -59,7 +59,7 @@ class Protocol(p2protocol.Protocol):
         if hasattr(self.factory, 'gotConnection'):
             self.factory.gotConnection(self)
         
-        self.pinger = deferral.RobustLoopingCall(self.send_ping, nonce=0)
+        self.pinger = deferral.RobustLoopingCall(self.send_ping, nonce=1)
         self.pinger.start(30)
     
     message_inv = pack.ComposedType([
